@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label for="">Secret key:</label>
                             <input type="text" class="" style="border: none;" id="email" autofocus autocomplete="off">
-                            <!-- <div>If you don't know the secret key, click <a href="./hint.html">here</a> to have some hints</div> -->
+                            <div>If you don't know the secret key, click <a href="./hint.html">here</a> to have some hints</div>
                             <div id=""></div>
                         </div>
                     
@@ -46,7 +46,8 @@
     $("#email").on('keyup', function(){
         if (key == $("#email").val()) {
             document.getElementById('gift-image').src = image
-            $("#p-two").html("Scan beside QR code")
+            let text = "Congratulations! Just one step ahead to get the prize!\nScan the QR code beside!"
+            $("#p-two").html(text)
             $('#p-two').css('fontSize', "30px");
         }
     })
@@ -56,8 +57,9 @@
         margin: 50px;
     }
     #gift img {
-        height: 500px;
-        width: auto;
+        width: 400px;
+        margin: 0 30px;
+        border-radius: 20px;
     }
     body {
         background-image: url('./bg.png');
