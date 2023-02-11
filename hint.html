@@ -26,9 +26,11 @@
                     <div class="row">
                         <div class="col-6">
                             <img src="./hnh.jpeg" alt="">
+                            <div>Hồ Ngọc Hà</div>
                         </div>
                         <div class="col-6">
                             <img src="./lq.jpeg" alt="">
+                            <div>Lệ Quyên</div>
                         </div>
                     </div>
                 </div>
@@ -38,8 +40,11 @@
             <div class="col-6">
                 <div style="margin-top: 60%;">
                     <span style="color: white; font-size: 30px;"></span>
-                    <span id="key">
+                    <span id="note">
                     
+                    </span>
+                    <span id="key">
+
                     </span>
                     <div id="clock" style="font-size: 40px; color: white; font-weight: bold;">
     
@@ -53,10 +58,19 @@
     </div>
 </body>
 <script>
+    let url = window.location.href
+    console.log(url.indexOf("config"))
+    let config = url.substring(url.indexOf("config"), url.indexOf("&"))
+    console.log(config)
+    let pass = config.substring(config.indexOf("=")+1, 16)
+    console.log(pass)
+
+
     $('input').on('keyup', function(){
         var data = $('input').val().toLowerCase()
         if (data == "em") {
-            $('#key').html("Your secret key is: 2HjKoPw")
+            $('#note').html("Your secret key is: ")
+            $("#key").html(pass).css("background", "yellow")
 
             // setTimeout(function(){
                 // window.location.replace('reward.html')
@@ -78,9 +92,18 @@
     })
 </script>
 <style>
+    #note {
+        font-size: 28px;
+        color: white;
+    }
     #key {
         /* margin: 40px; */
-        color: white;
+        /* background-color: yellow; */
+
+        border-radius: 7px;
+        padding: 0 7px;
+        color: black;
+        font-weight: bold;
         font-size: 30px;
         margin-top: 60%;
     }
@@ -98,6 +121,7 @@
     img{
         height: 300px;
         width: auto;
+        border-radius: 10px;
     }
     #gift {
         margin: 50px;

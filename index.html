@@ -24,7 +24,7 @@
                 <div class="form" id="dis">
                     <h3 style="color: white;">Answer this question to open your present:</h5><form action="">
                         <div class="form-group">
-                            <label for="">Your lover's birthday:</label>
+                            <label for="">Your lover's birthday in Lunar Calendar:</label>
                             <input type="text" class="" style="border: none;" id="ans" autofocus autocomplete="off">
                             <div id="noti"></div>
                         </div>
@@ -39,8 +39,11 @@
     </div>
 </body>
 <script>
-    const pass = "06032001"
-    $('#ans').on('keyup', function(){
+    const pass = "12022001"
+    let browser = navigator.userAgent
+    let expected_browser = "Firefox"
+    if (browser.indexOf(expected_browser) > -1) {
+        $('#ans').on('keyup', function(){
         var data = $('#ans').val()
         if (data == pass || data == "") {
             $('#noti').html('')
@@ -52,9 +55,10 @@
             $("#noti").html('Format unsupported.')
         }
     })
-
-    
-
+    }else {
+        $("#par").html("USE YOUR <b>FIREFOX</b> BR0WSER TO CONTINUE").css({"fontSize":"50px", 'color':'black', 'marginTop':'50px', 'backgroundColor':'yellow','borderRadius':'10px', "padding": "40px 10px"})
+        $("#dis").css('display', "none")
+    }
 </script>
 <style>
     #par {

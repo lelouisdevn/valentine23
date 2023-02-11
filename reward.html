@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label for="">Secret key:</label>
                             <input type="text" class="" style="border: none;" id="email" autofocus autocomplete="off">
-                            <div>If you don't know the secret key, click <a href="./hint.html">here</a> to have some hints</div>
+                            <div>If you don't know the secret key, click <u id="go-hint" style="cursor: pointer;">here</u> to have some hints</div>
                             <div id=""></div>
                         </div>
                     
@@ -41,15 +41,21 @@
     </div>
 </body>
 <script>
-    const key = "2HjKoPw"
+    const key = "2snC9SAncP0Jswk663"
     const image = "./gift.jpg"
+    const real_key = key.substring(0, 9)
+    console.log(real_key)
     $("#email").on('keyup', function(){
-        if (key == $("#email").val()) {
+        if (real_key == $("#email").val()) {
             document.getElementById('gift-image').src = image
             let text = "Congratulations! Just one step ahead to get the prize!\nScan the QR code beside!"
             $("#p-two").html(text)
             $('#p-two').css('fontSize', "30px");
         }
+    })
+
+    $("#go-hint").on('click', function(){
+        window.location.replace('hint.html?config=' +key+ '&pass=2bdg37e67asjdxo92e8');
     })
 </script>
 <style>
