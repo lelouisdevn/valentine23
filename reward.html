@@ -16,6 +16,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./this.js"></script>
 </head>
 <body>
     <div class="container">
@@ -41,13 +42,19 @@
     </div>
 </body>
 <script>
-    const key = "2snC9SAncP0Jswk663"
-    const image = "./gift.jpg"
-    const real_key = key.substring(0, 9)
-    console.log(real_key)
+    let url = window.location.href
+    let userColour = url.substring(url.indexOf("colour"))
+    let colour = userColour.substring(userColour.indexOf("=")+1)
+    console.log(colour)
+    console.log(colours)
+
+    if (colours != colour) {
+        window.location.replace("index.html")
+    }
+
     $("#email").on('keyup', function(){
         console.log($("#email").val())
-        if (real_key == $("#email").val()) {
+        if (key == $("#email").val()) {
             document.getElementById('gift-image').src = image
             let text = "Congratulations! Just one step ahead to get the prize!\nScan the QR code beside!"
             $("#p-two").html(text)
@@ -56,7 +63,7 @@
     })
 
     $("#go-hint").on('click', function(){
-        window.location.replace('hint.html?config=' +key+ '&pass=2bdg37e67asjdxo92e8');
+        window.location.replace('hint.html?colour=' + colour);
     })
 </script>
 <style>

@@ -16,6 +16,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./this.js"></script>
 </head>
 <body>
     <div class="container">
@@ -50,7 +51,7 @@
     
                     </div>
                     <div id="return">
-                        
+                        Or <u>return</u> now
                     </div>
                 </div>
             </div>
@@ -59,25 +60,22 @@
 </body>
 <script>
     let url = window.location.href
-    console.log(url.indexOf("config"))
-    let config = url.substring(url.indexOf("config"), url.indexOf("&"))
-    console.log(config)
-    let pass = config.substring(config.indexOf("=")+1, 16)
-    console.log(pass)
+    let userColour = url.substring(url.indexOf("colour"))
+    let colour = userColour.substring(userColour.indexOf("=")+1)
 
-
+    if (!colours.includes(colour)) {
+        window.location.replace("index.html")
+    }
+    
     $('input').on('keyup', function(){
         var data = $('input').val().toLowerCase()
         if (data == "em") {
             $('#note').html("Your secret key is: ")
-            $("#key").html(pass).css("background", "yellow")
-
-            // setTimeout(function(){
-                // window.location.replace('reward.html')
-            // }, 5000)
-
-            $("#return").html('<a href="./reward.html" style="color: white;">Or return now</a>')
-
+            $("#key").html(key).css("background", "yellow")
+            $("u").on("click", function() {
+                window.location.replace('reward.html?colour=' + colour)
+            })
+            $('#return').css("display","block")
             let time = 4;
             $("#clock").html("5")
             let interval = setInterval(function(){
@@ -85,21 +83,25 @@
                 time--
                 if (time == -1) {
                     clearInterval(interval)
-                    window.location.replace('reward.html')
+                    window.location.replace('reward.html?colour=' + colour)
                 }
             } ,1000)
         }
     })
 </script>
 <style>
+    u {
+        cursor: pointer;
+    }
+    #return {
+        display: none;
+        color: white;
+    }
     #note {
         font-size: 28px;
         color: white;
     }
     #key {
-        /* margin: 40px; */
-        /* background-color: yellow; */
-
         border-radius: 7px;
         padding: 0 7px;
         color: black;

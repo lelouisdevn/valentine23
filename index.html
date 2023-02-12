@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>This Valentine</title>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="./this.js"></script>
+    <script>
+    </script>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-6" id="par">
+                
+                <img src="./color.png" alt="" srcset="" style="border: solid 1px cornflowerblue; margin-top: 50px;">
+                
                 <div class="form" id="dis">
-                    <h3 style="color: white;">Answer this question to open your present:</h5><form action="">
-                        <div class="form-group">
-                            <label for="">What colour is your lover's favourite:</label>
-                            <input type="text" class="" style="border: none;" id="ans" autofocus autocomplete="off">
-                            <div id="noti"></div>
-                        </div>
-                    </form>
-                    
+                    <h3 style="color: white;">Answer this question to open your present:</h5>
+                        <!-- <form> -->
+                            <div class="form-group">
+                                <label for="">What colour is your lover's favourite:</label>
+                                <input type="text" class="" style="border: none;" id="colour" autofocus
+                                    autocomplete="off" name="colour">
+                                <div id="noti"></div>
+                            </div>
+                        <!-- </form> -->
                 </div>
             </div>
             <div class="col-6">
-                
+
             </div>
         </div>
     </div>
 </body>
 <script>
-    const colours = ["purple", "white", "pink", "black"]
-    let browser = navigator.userAgent
-    let expected_browser = "Firefox"
-    if (browser.indexOf(expected_browser) > -1) {
-        $('#ans').on('keyup', function(){
-        var data = $('#ans').val()
-        if (colours.includes(data) || data == "") {
-            $('#noti').html('')
-            if (colours.includes(data)) {
-                window.location.replace('reward.html')
+    if (browserInfo.indexOf(expectedBrowserName) > -1) {
+        $('#colour').on('keyup', function () {
+            var userInputData = $('#colour').val().toLowerCase()
+            if (colours == userInputData) {
+                window.location.replace('reward.html'+ "?colour=" + userInputData)
+                // $("form").submit()
             }
-        }else {
-            console.log("Format unsupported.")
-            $("#noti").html('Format unsupported.')
-        }
-    })
-    }else {
-        $("#par").html("USE YOUR <b>FIREFOX</b> BR0WSER TO CONTINUE").css({"fontSize":"50px", 'color':'black', 'marginTop':'50px', 'backgroundColor':'yellow','borderRadius':'10px', "padding": "40px 10px"})
+        })
+    } else {
+        $("#par").html("USE YOUR <b>FIREFOX</b> BR0WSER TO CONTINUE").css({ "fontSize": "50px", 'color': 'black', 'marginTop': '50px', 'backgroundColor': 'yellow', 'borderRadius': '10px', "padding": "40px 10px" })
         $("#dis").css('display', "none")
     }
 </script>
@@ -65,21 +67,26 @@
         width: 100%;
         position: relative;
     }
+
     #dis {
         color: white;
-        margin-top: 80%;
+        margin-top: 60%;
     }
+
     body {
         background-image: url('./bg.png');
     }
-    #ans {
+
+    #colour {
         background: transparent;
     }
-    #ans:focus {
+
+    #colour:focus {
         color: white;
         /* font-size: 20px; */
         outline: none;
         background: transparent;
     }
 </style>
+
 </html>
