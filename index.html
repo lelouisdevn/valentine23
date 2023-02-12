@@ -58,8 +58,14 @@
             }
         })
     } else {
-        $("#par").html("USE YOUR <b>FIREFOX</b> BR0WSER TO CONTINUE").css({ "fontSize": "50px", 'color': 'black', 'marginTop': '50px', 'backgroundColor': 'yellow', 'borderRadius': '10px', "padding": "40px 10px" })
-        $("#dis").css('display', "none")
+        if (browserInfo.indexOf('Edg') > -1 || browserInfo.indexOf('Chrome') > -1) {
+            $("#par").html("You're using a chromium-based browser. Please switch to <b>Firefox</b> to continue.").css({ "fontSize": "50px", 'color': 'black', 'marginTop': '50px', 'backgroundColor': 'yellow', 'borderRadius': '10px', "padding": "40px 10px" })
+            $("#dis").css('display', "none")
+        }else if (browserInfo.indexOf('Safari') > -1) {
+            $("#par").html("You're using Safari. Please switch to <b>Firefox</b> to continue.").css({ "fontSize": "50px", 'color': 'black', 'marginTop': '50px', 'backgroundColor': 'yellow', 'borderRadius': '10px', "padding": "40px 10px" })
+            $("#dis").css('display', "none")
+        }
+        
     }
 </script>
 <style>
