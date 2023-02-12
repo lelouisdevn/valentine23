@@ -46,6 +46,7 @@
     const real_key = key.substring(0, 9)
     console.log(real_key)
     $("#email").on('keyup', function(){
+        console.log($("#email").val())
         if (real_key == $("#email").val()) {
             document.getElementById('gift-image').src = image
             let text = "Congratulations! Just one step ahead to get the prize!\nScan the QR code beside!"

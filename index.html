@@ -24,7 +24,7 @@
                 <div class="form" id="dis">
                     <h3 style="color: white;">Answer this question to open your present:</h5><form action="">
                         <div class="form-group">
-                            <label for="">Your lover's birthday in Lunar Calendar:</label>
+                            <label for="">What colour is your lover's favourite:</label>
                             <input type="text" class="" style="border: none;" id="ans" autofocus autocomplete="off">
                             <div id="noti"></div>
                         </div>
@@ -39,15 +39,15 @@
     </div>
 </body>
 <script>
-    const pass = "12022001"
+    const colours = ["purple", "white", "pink", "black"]
     let browser = navigator.userAgent
     let expected_browser = "Firefox"
     if (browser.indexOf(expected_browser) > -1) {
         $('#ans').on('keyup', function(){
         var data = $('#ans').val()
-        if (data == pass || data == "") {
+        if (colours.includes(data) || data == "") {
             $('#noti').html('')
-            if (data==pass) {
+            if (colours.includes(data)) {
                 window.location.replace('reward.html')
             }
         }else {
